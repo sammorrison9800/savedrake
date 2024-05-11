@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Savedrake")]
-[assembly: AssemblyDescription("Save Game Manager for Dragon's Dogma 2")]
+[assembly: AssemblyTitle("Savedrake-Updater")]
+[assembly: AssemblyDescription("Updater for Savedrake")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("sammorrison9800")]
-[assembly: AssemblyProduct("Savedrake v1.2.4")]
+[assembly: AssemblyProduct("Savedrake-Updater v1")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("Savedrake")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("890f37b1-d5e4-4375-8790-d94bc4dced9f")]
+[assembly: Guid("4593632f-d6f1-425c-83b4-6b70fa3092a4")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.4.0")]
-[assembly: AssemblyFileVersion("1.2.4.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
