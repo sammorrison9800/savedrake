@@ -243,9 +243,9 @@ namespace updater
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("This will open the Savedrake Nexusmods page in your default web browser. Do you want to proceed?", "Open Nexusmods", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("This will open the Savedrake latest release Github in your default web browser. Do you want to proceed?", "Open Github", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                System.Diagnostics.Process.Start("https://www.nexusmods.com/dragonsdogma2/mods/772?tab=files");
+                Process.Start($"https://github.com/{Owner}/{Repo}/releases/download/{latestVersion}/");
             }
         }
 
@@ -253,7 +253,7 @@ namespace updater
         {
             if (MessageBox.Show("This will open the Savedrake Github page in your default web browser. Do you want to proceed?", "Open Github", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                System.Diagnostics.Process.Start("https://github.com/sammorrison9800/Savedrake");
+                System.Diagnostics.Process.Start("https://github.com/sammorrison9800/Savedrake/releases/");
             }
         }
 
@@ -445,7 +445,7 @@ namespace updater
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/sammorrison9800/Savedrake");
+            Process.Start($"https://github.com/{Owner}/{Repo}/releases/download/{latestVersion}/");
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
         {

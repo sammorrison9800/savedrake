@@ -76,6 +76,7 @@
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -117,7 +118,7 @@
             this.toolStripSeparator1,
             this.restoreDefaultToolStripMenuItem});
             this.ssettingsToolStripMenuItem.Name = "ssettingsToolStripMenuItem";
-            this.ssettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ssettingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.ssettingsToolStripMenuItem.Text = "Settings";
             // 
             // limitAutobackupToolStripMenuItem
@@ -125,7 +126,7 @@
             this.limitAutobackupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox2});
             this.limitAutobackupToolStripMenuItem.Name = "limitAutobackupToolStripMenuItem";
-            this.limitAutobackupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limitAutobackupToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.limitAutobackupToolStripMenuItem.Text = "Limit Autobackup";
             // 
             // toolStripTextBox2
@@ -144,7 +145,7 @@
             this.randomlyGeneratedToolStripMenuItem,
             this.timeStampedToolStripMenuItem});
             this.fileNameFormatToolStripMenuItem.Name = "fileNameFormatToolStripMenuItem";
-            this.fileNameFormatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fileNameFormatToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.fileNameFormatToolStripMenuItem.Text = "Backup File Name";
             // 
             // randomlyGeneratedToolStripMenuItem
@@ -165,19 +166,19 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
             // 
             // restoreDefaultToolStripMenuItem
             // 
             this.restoreDefaultToolStripMenuItem.Name = "restoreDefaultToolStripMenuItem";
-            this.restoreDefaultToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.restoreDefaultToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.restoreDefaultToolStripMenuItem.Text = "Reset Settings";
             this.restoreDefaultToolStripMenuItem.Click += new System.EventHandler(this.restoreDefaultToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -434,6 +435,7 @@
             this.combobox_auto.Size = new System.Drawing.Size(156, 23);
             this.combobox_auto.TabIndex = 55;
             this.combobox_auto.Text = "5 minutes";
+            this.toolTip4.SetToolTip(this.combobox_auto, "Press Enter after typing your custom interval");
             this.combobox_auto.SelectedIndexChanged += new System.EventHandler(this.combobox_auto_SelectedIndexChanged);
             // 
             // checkbox_auto
@@ -654,6 +656,7 @@
         private System.Windows.Forms.ToolStripMenuItem limitAutobackupToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolTip toolTip4;
     }
 }
 

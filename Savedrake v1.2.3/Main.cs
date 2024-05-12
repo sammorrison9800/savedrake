@@ -659,6 +659,7 @@ namespace Savedrake
             {
                 AddProcessedTextToComboBox();
                 combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);
+                MessageBox.Show($"Custom interval {combobox_auto.Items[combobox_auto.SelectedIndex].ToString()} added.");
             }
             // Handle auto backup based on checkbox state
             else if (checkbox_auto.Checked)
@@ -686,17 +687,15 @@ namespace Savedrake
                 {
                     AddProcessedTextToComboBox();
                     combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);
+                    MessageBox.Show($"Custom interval {combobox_auto.Items[combobox_auto.SelectedIndex].ToString()} added.");
                 }
 
                 // Handle auto backup based on checkbox state
-                if (checkbox_auto.Checked)
-                {
-                    //RestartAutoBackup();
-                }
-                else
+                if (!checkbox_auto.Checked)
                 {
                     Status.Text = $"Autobackup interval set to {combobox_auto.Text}.";
                 }
+                
 
                 // Suppress the default error sound and handle the Enter key
                 e.SuppressKeyPress = true;
@@ -719,14 +718,11 @@ namespace Savedrake
             combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);
 
             // If checkbox_auto is checked, restart the autobackup
-            if (checkbox_auto.Checked)
-            {
-                //RestartAutoBackup();
-            }
-            else
+            if (!checkbox_auto.Checked)
             {
                 Status.Text = $"Autobackup interval set to {combobox_auto.Text}.";
             }
+            
         }
 
         private void UpdateComboBox(Action action)
@@ -743,7 +739,8 @@ namespace Savedrake
 
         private void checkbox_auto_CheckedChanged(object sender, EventArgs e)
         {
-            combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);
+            if (checkbox_auto.Checked) { combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);}
+            
 
             
 
@@ -1819,8 +1816,10 @@ namespace Savedrake
         {
             // Enable the button if there are files in the deletedFiles list, otherwise disable it
             button_undo.Enabled = deletedFiles.Count > 0;
+
             // Set the button's background color
             button_undo.BackColor = deletedFiles.Count < 0 ? System.Drawing.ColorTranslator.FromHtml("#f0f0f0") : System.Drawing.Color.Transparent;
+            button_undo.BackColor = deletedFiles.Count > 0 ? Color.White : System.Drawing.Color.Transparent;
         }
 
 
@@ -2261,6 +2260,7 @@ namespace Savedrake
         {
             LoadBackupHistory();
             combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);
+
             SortComboBoxItems();
             listView.Sort();
             foreach (ListViewItem item in listView.Items)
@@ -2455,10 +2455,10 @@ namespace Savedrake
 
         private void fAQToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("This will open the FAQ page on Github in your default web browser. Do you want to proceed?", "Open FAQ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show("This will open the FAQ page on Nexusmods in your default web browser. Do you want to proceed?", "Open FAQ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                Process.Start("https://github.com/sammorrison9800/Savedrake/blob/master/FAQ.md");
+                Process.Start("https://www.nexusmods.com/dragonsdogma2/mods/772/?tab=posts");
             }
         }
 
