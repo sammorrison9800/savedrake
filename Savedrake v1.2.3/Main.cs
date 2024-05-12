@@ -321,6 +321,7 @@ namespace Savedrake
             public bool IsRecording { get; set; }
         }
 
+       
         private void SaveSettings()
         {
             var settings = new AppSettings
@@ -332,6 +333,8 @@ namespace Savedrake
                 // Save the rest of the settings
                 WindowWidth = this.Size.Width,
                 WindowHeight = this.Size.Height,
+            
+
                 Textbox1 = textbox1.Text,
                 Textbox2 = textbox2.Text,
 
@@ -356,6 +359,8 @@ namespace Savedrake
 
             };
 
+            
+
             var serializer = new XmlSerializer(typeof(AppSettings));
             using (var writer = new StreamWriter("savedrake_settings.xml"))
             {
@@ -374,6 +379,14 @@ namespace Savedrake
                 using (var reader = new StreamReader("savedrake_settings.xml"))
                 {
                     var settings = (AppSettings)serializer.Deserialize(reader);
+
+                    //Loading Filenaming convention before
+                    try
+                    {
+                        randomlyGeneratedToolStripMenuItem.Checked = settings.BackupFileName1;
+                        timeStampedToolStripMenuItem.Checked = settings.BackupFileName2;
+                    }
+                    catch { }
 
                     // Load combobox_auto information first
                     combobox_auto.Items.Clear();
@@ -395,12 +408,7 @@ namespace Savedrake
                     checkbox_hot.Checked = settings.CheckboxHot;
                     textbox3.Text = settings.Textbox3 ?? " "; // Use null-coalescing operator for simplicity
 
-                    try
-                    {
-                        randomlyGeneratedToolStripMenuItem.Checked = settings.BackupFileName1;
-                        timeStampedToolStripMenuItem.Checked = settings.BackupFileName2;
-                    }
-                    catch { }
+                    
 
                     // Load the hotkey settings
                     try
@@ -1778,7 +1786,14 @@ namespace Savedrake
 
         private void Quit_Click(object sender, EventArgs e)
         {
-            Application.Exit(); // Close the form
+            
+            trayIcon.Visible = false;
+            this.Opacity = 0.0;
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            
+            Application.Exit();
+
         }
         #endregion
 
