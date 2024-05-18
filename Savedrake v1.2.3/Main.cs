@@ -22,17 +22,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using ReaLTaiizor.Colors;
+using ReaLTaiizor.Controls;
+using ReaLTaiizor.Enum.Material;
+using ReaLTaiizor.Forms;
+using ReaLTaiizor.Manager;
+using ReaLTaiizor.Util;
 
 
 
 namespace Savedrake
 {
-    public partial class Main : Form
+    public partial class Main : MaterialForm
     {
         //Check only one instance is running using Mutex
         // Add a static mutex field
         private static Mutex mutex = new Mutex(true, "890f37b1-d5e4-4375-8790-d94bc4dced9f");
 
+        //THEME
+        private readonly MaterialSkinManager materialSkinManager;
+        private int colorSchemeIndex;
 
         //Loading bool
         private bool isLoading = false;
@@ -150,6 +159,20 @@ namespace Savedrake
 
 
             InitializeComponent();
+
+            // Initialize MaterialSkinManager
+            materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new MaterialColorScheme(
+                        materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialPrimary.Teal500 : MaterialPrimary.Indigo500,
+                        materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialPrimary.Teal700 : MaterialPrimary.Indigo700,
+                        materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialPrimary.Teal200 : MaterialPrimary.Indigo100,
+                        MaterialAccent.Pink200,
+                        MaterialTextShade.WHITE);
+            this.FormStyle = FormStyles.ActionBar_None;
+
 
             this.Resize += new System.EventHandler(this.Main_Resize); //System Tray and listView Comumn alignment 
 
@@ -660,7 +683,7 @@ namespace Savedrake
             {
                 AddProcessedTextToComboBox();
                 combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);
-                MessageBox.Show($"Custom interval {combobox_auto.Items[combobox_auto.SelectedIndex].ToString()} added.");
+                MessageBox.Show($"Custom interval {combobox_auto.Items[combobox_auto.SelectedIndex]} added.", "Interval Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // Handle auto backup based on checkbox state
             else if (checkbox_auto.Checked)
@@ -688,7 +711,7 @@ namespace Savedrake
                 {
                     AddProcessedTextToComboBox();
                     combobox_auto.SelectedIndex = combobox_auto.Items.IndexOf(combobox_auto.Text);
-                    MessageBox.Show($"Custom interval {combobox_auto.Items[combobox_auto.SelectedIndex].ToString()} added.");
+                    MessageBox.Show($"Custom interval {combobox_auto.Items[combobox_auto.SelectedIndex]} added.", "Interval Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 // Handle auto backup based on checkbox state
@@ -773,10 +796,10 @@ namespace Savedrake
                     textbox1.Enabled = false;
                     textbox2.Enabled = false;
                     combobox_auto.Enabled = false;
-                    Button_br_1.Enabled = false;
-                    Button_br_2.Enabled = false;
-                    Button_br_1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f0f0f0");
-                    Button_br_2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f0f0f0");
+                    button_br_1.Enabled = false;
+                    button_br_2.Enabled = false;
+                    button_br_1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f0f0f0");
+                    button_br_2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f0f0f0");
                 }
             }
             else
@@ -784,10 +807,10 @@ namespace Savedrake
                 textbox1.Enabled = true;
                 textbox2.Enabled = true;
                 combobox_auto.Enabled = true;
-                Button_br_1.Enabled = true;
-                Button_br_2.Enabled = true;
-                Button_br_1.BackColor = Color.White;
-                Button_br_2.BackColor= Color.White;
+                button_br_1.Enabled = true;
+                button_br_2.Enabled = true;
+                button_br_1.BackColor = Color.White;
+                button_br_2.BackColor= Color.White;
                 Status.Text = $"Autobackup disabled";
             }
 
@@ -992,7 +1015,7 @@ namespace Savedrake
         //Undetected by Bkav
         #region Browse and Open Buttons
 
-        private void Button_br_1_Click(object sender, EventArgs e)
+        private void button_br_1_Click(object sender, EventArgs e)
         {
             PromptForFolderSelection();
         }
@@ -1054,7 +1077,7 @@ namespace Savedrake
             }
         }
 
-        private void Button_br_2_Click(object sender, EventArgs e)
+        private void button_br_2_Click(object sender, EventArgs e)
         {
             // Check if the savegame location is not set
             if (string.IsNullOrWhiteSpace(textbox1.Text))
@@ -1146,7 +1169,7 @@ namespace Savedrake
             // Check if the form is minimized and the checkbox is checked
             if (this.WindowState == FormWindowState.Minimized && checkbox_tray.Checked)
             {
-
+                trayIcon.ShowBalloonTip(1000, "Savedrake Minimized", "Savedrake is now minimized to the system tray.", ToolTipIcon.Info);
 
                 // Hide the form from the taskbar
                 //this.ShowInTaskbar = false;
@@ -1155,7 +1178,7 @@ namespace Savedrake
 
 
                 // Show a balloon tip if needed
-                trayIcon.ShowBalloonTip(500, "Application Minimized", "Savedrake is now minimized to the system tray.", ToolTipIcon.Info);
+                //
             }
             else
             {
@@ -2536,6 +2559,142 @@ namespace Savedrake
             {
                 mutex.ReleaseMutex();
             }
+        }
+        //THEME
+        Color lightBackColor = Color.White;
+        Color darkBackColor = Color.FromArgb(45, 45, 48);
+        Color lightForeColor = Color.Black;
+        Color darkForeColor = Color.White;
+
+        Color lightColumnBackColor = Color.White;
+        Color darkColumnBackColor = Color.FromArgb(45, 45, 48);
+        Color lightColumnForeColor = Color.Black;
+        Color darkColumnForeColor = Color.White;
+
+        // Function to toggle between light and dark theme
+
+        private bool isDarkTheme;
+        private void ToggleTheme()
+        {
+            isDarkTheme = !isDarkTheme; // Toggle the theme flag
+            materialSkinManager.Theme = isDarkTheme ? MaterialSkinManager.Themes.DARK : MaterialSkinManager.Themes.LIGHT;
+            UpdateColor();
+        }
+
+        private void UpdateColor()
+        {
+            // Set colors based on the theme
+            Color backColor = isDarkTheme ? darkBackColor : lightBackColor;
+            Color foreColor = isDarkTheme ? darkForeColor : lightForeColor;
+            Color columnBackColor = isDarkTheme ? darkColumnBackColor : lightColumnBackColor;
+            Color columnForeColor = isDarkTheme ? darkColumnForeColor : lightColumnForeColor;
+
+            this.BackColor = backColor;
+
+            // Update menu strip colors
+            menuStrip1.BackColor = backColor;
+            menuStrip1.ForeColor = foreColor;
+
+            // Update context menu strip colors
+            contextMenuStrip.BackColor = backColor;
+            contextMenuStrip.ForeColor = foreColor;
+            contextMenuStrip1.BackColor = backColor;
+            contextMenuStrip1.ForeColor = foreColor;
+
+            // Update status strip colors
+            statusStrip1.BackColor = backColor;
+            statusStrip1.ForeColor = foreColor;
+
+            // Update buttons' colors
+            button_res.BackColor = backColor;
+            button_res.ForeColor = foreColor;
+            button_backup.BackColor = backColor;
+
+            button_backup.ForeColor = foreColor;
+            button_undo.BackColor = backColor;
+            button_undo.ForeColor = foreColor;
+            button_br_1.BackColor = backColor;
+            button_br_1.ForeColor = foreColor;
+            button_br_2.BackColor = backColor;
+            button_br_2.ForeColor = foreColor;
+            Button_op_1.BackColor = backColor;
+            Button_op_1.ForeColor = foreColor;
+            Button_op_2.BackColor = backColor;
+            Button_op_2.ForeColor = foreColor;
+            button_ref.BackColor = backColor;
+            button_ref.ForeColor = foreColor;
+            // ... Add similar lines for other buttons
+
+            // Update the title bar colors
+            // Update the title bar colors
+            //this.TitleColor = foreColor; // This sets the text color of the title bar
+
+
+            // Update checkboxes' colors
+            checkbox_hot.ForeColor = foreColor;
+            checkbox_tray.ForeColor = foreColor;
+            checkbox_auto.ForeColor = foreColor;
+
+            // ... Add similar lines for other checkboxes
+
+            // Update comboboxes' colors
+            combobox_auto.BackColor = backColor;
+            combobox_auto.ForeColor = foreColor;
+
+            // ... Add similar lines for other comboboxes
+
+            // Update textboxes' colors
+            textbox1.BackColor = backColor;
+            textbox1.ForeColor = foreColor;
+            textbox2.BackColor = backColor;
+            textbox2.ForeColor = foreColor;
+            // ... Add similar lines for other textboxes
+
+            // Update labels' colors
+            label1.ForeColor = foreColor;
+            label2.ForeColor = foreColor;
+            //textbox3.ForeColor = foreColor;
+            // ... Add similar lines for other labels
+
+            // Update ListView's colors
+            listView.BackColor = backColor;
+            listView.ForeColor = foreColor;
+
+            // Set the OwnerDraw property to true to draw the columns manually
+            listView.OwnerDraw = true;
+
+            // Handle the DrawColumnHeader event to draw the column headers
+            listView.DrawColumnHeader += (sender, e) =>
+            {
+                using (SolidBrush backBrush = new SolidBrush(columnBackColor))
+                using (SolidBrush foreBrush = new SolidBrush(columnForeColor))
+                {
+                    e.Graphics.FillRectangle(backBrush, e.Bounds);
+                    e.Graphics.DrawString(e.Header.Text, e.Font, foreBrush, e.Bounds);
+                }
+            };
+
+            // Handle the DrawItem event to draw the items
+            listView.DrawItem += (sender, e) =>
+            {
+                e.DrawDefault = true;
+            };
+
+            // ... Add similar lines for other listviews
+
+            // Update tooltips' colors
+            toolTip1.BackColor = backColor;
+            toolTip1.ForeColor = foreColor;
+            // ... Add similar lines for other tooltips
+
+            // Update any other controls here
+            //this.isDarkTheme = isDarkTheme;
+        }
+
+        private void toolStripMenuTheme_Click(object sender, EventArgs e)
+        {
+            // Toggle the theme based on the current value of isDarkTheme
+            ToggleTheme();
         }
 
 
