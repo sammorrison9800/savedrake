@@ -245,7 +245,7 @@ namespace updater
         {
             if (MessageBox.Show("This will open the Savedrake latest release Github in your default web browser. Do you want to proceed?", "Open Github", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Process.Start($"https://github.com/{Owner}/{Repo}/releases/download/{latestVersion}/");
+                Process.Start($"https://github.com/{Owner}/{Repo}/releases/tag/{latestVersion}/");
             }
         }
 
@@ -445,7 +445,7 @@ namespace updater
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start($"https://github.com/{Owner}/{Repo}/releases/download/{latestVersion}/");
+            Process.Start($"https://github.com/{Owner}/{Repo}/releases/tag/{latestVersion}/");
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
