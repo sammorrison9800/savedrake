@@ -1030,7 +1030,11 @@ namespace Savedrake
                                 else
                                 {
                                     textbox1.Text = folder; // User confirmed the selection
-                                    if (!Directory.EnumerateFileSystemEntries(textbox1.Text).Any())
+                                    // Create a new DirectoryInfo object
+                                    DirectoryInfo directoryInfo = new DirectoryInfo(textbox1.Text);
+
+                                    // Check if the directory is empty
+                                    if (directoryInfo.GetFileSystemInfos().Length == 0)
                                     {
                                         MessageBox.Show("The selected Savegame location is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         PromptForFolderSelection();
@@ -1040,7 +1044,11 @@ namespace Savedrake
                             else 
                             {
                                 textbox1.Text = folder; // User confirmed the selection
-                                if (!Directory.EnumerateFileSystemEntries(textbox1.Text).Any())
+                                // Create a new DirectoryInfo object
+                                DirectoryInfo directoryInfo = new DirectoryInfo(textbox1.Text);
+
+                                // Check if the directory is empty
+                                if (directoryInfo.GetFileSystemInfos().Length == 0)
                                 {
                                     MessageBox.Show("The selected Savegame location is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     PromptForFolderSelection();
@@ -1224,8 +1232,11 @@ namespace Savedrake
                 return;
             }
 
-            // Check if the source is empty
-            if (!Directory.EnumerateFileSystemEntries(textbox1.Text).Any())
+            // Create a new DirectoryInfo object
+            DirectoryInfo directoryInfo = new DirectoryInfo(textbox1.Text);
+
+            // Check if the directory is empty
+            if (directoryInfo.GetFileSystemInfos().Length == 0)
             {
                 MessageBox.Show("The selected Savegame location is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
