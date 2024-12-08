@@ -39,6 +39,8 @@
             this.randomlyGeneratedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeStampedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuTheme = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.restoreDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,10 +68,10 @@
             this.checkbox_tray = new System.Windows.Forms.CheckBox();
             this.combobox_auto = new System.Windows.Forms.ComboBox();
             this.checkbox_auto = new System.Windows.Forms.CheckBox();
-            this.Button_br_2 = new System.Windows.Forms.Button();
+            this.button_br_2 = new System.Windows.Forms.Button();
             this.textbox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.Button_br_1 = new System.Windows.Forms.Button();
+            this.button_br_1 = new System.Windows.Forms.Button();
             this.textbox1 = new System.Windows.Forms.TextBox();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -87,16 +89,15 @@
             // 
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(3, 64);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(334, 30);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip1.Size = new System.Drawing.Size(367, 24);
             this.menuStrip1.TabIndex = 42;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,7 +108,7 @@
             this.ssettingsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 28);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // ssettingsToolStripMenuItem
@@ -116,9 +117,11 @@
             this.limitAutobackupToolStripMenuItem,
             this.fileNameFormatToolStripMenuItem,
             this.toolStripSeparator1,
+            this.toolStripMenuTheme,
+            this.toolStripSeparator2,
             this.restoreDefaultToolStripMenuItem});
             this.ssettingsToolStripMenuItem.Name = "ssettingsToolStripMenuItem";
-            this.ssettingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.ssettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ssettingsToolStripMenuItem.Text = "Settings";
             // 
             // limitAutobackupToolStripMenuItem
@@ -132,7 +135,6 @@
             // toolStripTextBox2
             // 
             this.toolStripTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(100, 23);
@@ -168,6 +170,18 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
             // 
+            // toolStripMenuTheme
+            // 
+            this.toolStripMenuTheme.Name = "toolStripMenuTheme";
+            this.toolStripMenuTheme.Size = new System.Drawing.Size(169, 22);
+            this.toolStripMenuTheme.Text = "Toggle Theme";
+            this.toolStripMenuTheme.Click += new System.EventHandler(this.toolStripMenuTheme_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
+            // 
             // restoreDefaultToolStripMenuItem
             // 
             this.restoreDefaultToolStripMenuItem.Name = "restoreDefaultToolStripMenuItem";
@@ -178,7 +192,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -189,7 +203,7 @@
             this.fAQToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 28);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // checkForUpdateToolStripMenuItem
@@ -249,7 +263,7 @@
             this.textbox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.textbox3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textbox3.ForeColor = System.Drawing.Color.OrangeRed;
-            this.textbox3.Location = new System.Drawing.Point(167, 332);
+            this.textbox3.Location = new System.Drawing.Point(207, 394);
             this.textbox3.Name = "textbox3";
             this.textbox3.Size = new System.Drawing.Size(10, 15);
             this.textbox3.TabIndex = 63;
@@ -286,7 +300,7 @@
             this.Status.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.Status.Name = "Status";
             this.Status.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.Status.Size = new System.Drawing.Size(317, 22);
+            this.Status.Size = new System.Drawing.Size(350, 17);
             this.Status.Spring = true;
             this.Status.Text = "Ready.";
             this.Status.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -299,10 +313,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Status});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 635);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 702);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(334, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(367, 21);
             this.statusStrip1.TabIndex = 62;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -310,10 +323,9 @@
             // 
             this.button_res.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_res.BackColor = System.Drawing.Color.LavenderBlush;
-            this.button_res.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button_res.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_res.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_res.Location = new System.Drawing.Point(196, 541);
+            this.button_res.Location = new System.Drawing.Point(236, 606);
             this.button_res.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.button_res.Name = "button_res";
             this.button_res.Size = new System.Drawing.Size(130, 26);
@@ -326,10 +338,9 @@
             // 
             this.button_backup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_backup.BackColor = System.Drawing.Color.LavenderBlush;
-            this.button_backup.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button_backup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_backup.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_backup.Location = new System.Drawing.Point(8, 541);
+            this.button_backup.Location = new System.Drawing.Point(7, 606);
             this.button_backup.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.button_backup.Name = "button_backup";
             this.button_backup.Size = new System.Drawing.Size(130, 26);
@@ -343,7 +354,7 @@
             this.button_undo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_undo.BackColor = System.Drawing.Color.White;
             this.button_undo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_undo.Location = new System.Drawing.Point(196, 587);
+            this.button_undo.Location = new System.Drawing.Point(236, 652);
             this.button_undo.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.button_undo.Name = "button_undo";
             this.button_undo.Size = new System.Drawing.Size(130, 26);
@@ -357,7 +368,7 @@
             this.button_ref.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_ref.BackColor = System.Drawing.Color.White;
             this.button_ref.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ref.Location = new System.Drawing.Point(8, 587);
+            this.button_ref.Location = new System.Drawing.Point(7, 652);
             this.button_ref.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.button_ref.Name = "button_ref";
             this.button_ref.Size = new System.Drawing.Size(130, 26);
@@ -371,7 +382,7 @@
             this.Button_op_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_op_2.BackColor = System.Drawing.Color.White;
             this.Button_op_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_op_2.Location = new System.Drawing.Point(196, 210);
+            this.Button_op_2.Location = new System.Drawing.Point(235, 268);
             this.Button_op_2.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.Button_op_2.Name = "Button_op_2";
             this.Button_op_2.Size = new System.Drawing.Size(130, 26);
@@ -385,7 +396,7 @@
             this.Button_op_1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_op_1.BackColor = System.Drawing.Color.White;
             this.Button_op_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_op_1.Location = new System.Drawing.Point(196, 102);
+            this.Button_op_1.Location = new System.Drawing.Point(235, 160);
             this.Button_op_1.Margin = new System.Windows.Forms.Padding(5, 10, 2, 10);
             this.Button_op_1.Name = "Button_op_1";
             this.Button_op_1.Size = new System.Drawing.Size(130, 26);
@@ -398,7 +409,7 @@
             // 
             this.checkbox_hot.AutoSize = true;
             this.checkbox_hot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkbox_hot.Location = new System.Drawing.Point(7, 330);
+            this.checkbox_hot.Location = new System.Drawing.Point(6, 392);
             this.checkbox_hot.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.checkbox_hot.Name = "checkbox_hot";
             this.checkbox_hot.Size = new System.Drawing.Size(109, 19);
@@ -411,7 +422,7 @@
             // 
             this.checkbox_tray.AutoSize = true;
             this.checkbox_tray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkbox_tray.Location = new System.Drawing.Point(7, 297);
+            this.checkbox_tray.Location = new System.Drawing.Point(6, 357);
             this.checkbox_tray.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.checkbox_tray.Name = "checkbox_tray";
             this.checkbox_tray.Size = new System.Drawing.Size(151, 19);
@@ -429,7 +440,7 @@
             "30 minutes",
             "1 hour",
             "2 hours"});
-            this.combobox_auto.Location = new System.Drawing.Point(170, 262);
+            this.combobox_auto.Location = new System.Drawing.Point(209, 320);
             this.combobox_auto.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.combobox_auto.Name = "combobox_auto";
             this.combobox_auto.Size = new System.Drawing.Size(156, 23);
@@ -442,7 +453,7 @@
             // 
             this.checkbox_auto.AutoSize = true;
             this.checkbox_auto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkbox_auto.Location = new System.Drawing.Point(7, 263);
+            this.checkbox_auto.Location = new System.Drawing.Point(7, 321);
             this.checkbox_auto.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.checkbox_auto.Name = "checkbox_auto";
             this.checkbox_auto.Size = new System.Drawing.Size(125, 19);
@@ -452,28 +463,28 @@
             this.checkbox_auto.UseVisualStyleBackColor = true;
             this.checkbox_auto.CheckedChanged += new System.EventHandler(this.checkbox_auto_CheckedChanged);
             // 
-            // Button_br_2
+            // button_br_2
             // 
-            this.Button_br_2.BackColor = System.Drawing.Color.White;
-            this.Button_br_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_br_2.Location = new System.Drawing.Point(8, 210);
-            this.Button_br_2.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
-            this.Button_br_2.Name = "Button_br_2";
-            this.Button_br_2.Size = new System.Drawing.Size(130, 26);
-            this.Button_br_2.TabIndex = 52;
-            this.Button_br_2.Text = "Browse";
-            this.Button_br_2.UseVisualStyleBackColor = false;
-            this.Button_br_2.Click += new System.EventHandler(this.Button_br_2_Click);
+            this.button_br_2.BackColor = System.Drawing.Color.White;
+            this.button_br_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_br_2.Location = new System.Drawing.Point(8, 223);
+            this.button_br_2.Margin = new System.Windows.Forms.Padding(5);
+            this.button_br_2.Name = "button_br_2";
+            this.button_br_2.Size = new System.Drawing.Size(130, 26);
+            this.button_br_2.TabIndex = 52;
+            this.button_br_2.Text = "Browse";
+            this.button_br_2.UseVisualStyleBackColor = false;
+            this.button_br_2.Click += new System.EventHandler(this.button_br_2_Click);
             // 
             // textbox2
             // 
             this.textbox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textbox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textbox2.Location = new System.Drawing.Point(8, 177);
+            this.textbox2.Location = new System.Drawing.Point(8, 235);
             this.textbox2.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.textbox2.Name = "textbox2";
-            this.textbox2.Size = new System.Drawing.Size(318, 23);
+            this.textbox2.Size = new System.Drawing.Size(357, 23);
             this.textbox2.TabIndex = 50;
             // 
             // label2
@@ -481,35 +492,35 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 153);
+            this.label2.Location = new System.Drawing.Point(4, 211);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 15);
             this.label2.TabIndex = 51;
             this.label2.Text = "Backup Location:";
             // 
-            // Button_br_1
+            // button_br_1
             // 
-            this.Button_br_1.BackColor = System.Drawing.Color.White;
-            this.Button_br_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_br_1.Location = new System.Drawing.Point(8, 102);
-            this.Button_br_1.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
-            this.Button_br_1.Name = "Button_br_1";
-            this.Button_br_1.Size = new System.Drawing.Size(130, 26);
-            this.Button_br_1.TabIndex = 48;
-            this.Button_br_1.Text = "Browse";
-            this.Button_br_1.UseVisualStyleBackColor = false;
-            this.Button_br_1.Click += new System.EventHandler(this.Button_br_1_Click);
+            this.button_br_1.BackColor = System.Drawing.Color.White;
+            this.button_br_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_br_1.Location = new System.Drawing.Point(8, 116);
+            this.button_br_1.Margin = new System.Windows.Forms.Padding(5);
+            this.button_br_1.Name = "button_br_1";
+            this.button_br_1.Size = new System.Drawing.Size(130, 26);
+            this.button_br_1.TabIndex = 48;
+            this.button_br_1.Text = "Browse";
+            this.button_br_1.UseVisualStyleBackColor = false;
+            this.button_br_1.Click += new System.EventHandler(this.button_br_1_Click);
             // 
             // textbox1
             // 
             this.textbox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textbox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textbox1.Location = new System.Drawing.Point(8, 69);
+            this.textbox1.Location = new System.Drawing.Point(8, 127);
             this.textbox1.Margin = new System.Windows.Forms.Padding(2, 10, 2, 10);
             this.textbox1.Name = "textbox1";
-            this.textbox1.Size = new System.Drawing.Size(318, 23);
+            this.textbox1.Size = new System.Drawing.Size(357, 23);
             this.textbox1.TabIndex = 45;
             // 
             // toolTip2
@@ -524,7 +535,7 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 42);
+            this.label1.Location = new System.Drawing.Point(4, 100);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 15);
@@ -543,11 +554,11 @@
             this.listView.FullRowSelect = true;
             this.listView.HideSelection = false;
             this.listView.LabelEdit = true;
-            this.listView.Location = new System.Drawing.Point(8, 377);
+            this.listView.Location = new System.Drawing.Point(7, 439);
             this.listView.Margin = new System.Windows.Forms.Padding(2);
             this.listView.Name = "listView";
             this.listView.ShowItemToolTips = true;
-            this.listView.Size = new System.Drawing.Size(318, 142);
+            this.listView.Size = new System.Drawing.Size(359, 141);
             this.listView.TabIndex = 64;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -566,7 +577,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(334, 661);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(373, 726);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.textbox3);
             this.Controls.Add(this.statusStrip1);
@@ -580,10 +592,10 @@
             this.Controls.Add(this.checkbox_tray);
             this.Controls.Add(this.combobox_auto);
             this.Controls.Add(this.checkbox_auto);
-            this.Controls.Add(this.Button_br_2);
+            this.Controls.Add(this.button_br_2);
             this.Controls.Add(this.textbox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Button_br_1);
+            this.Controls.Add(this.button_br_1);
             this.Controls.Add(this.textbox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -591,7 +603,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(320, 660);
             this.Name = "Main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -635,10 +646,10 @@
         private System.Windows.Forms.ComboBox combobox_auto;
         private System.Windows.Forms.CheckBox checkbox_auto;
         private System.Windows.Forms.ToolTip toolTip2;
-        private System.Windows.Forms.Button Button_br_2;
+        private System.Windows.Forms.Button button_br_2;
         private System.Windows.Forms.TextBox textbox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button Button_br_1;
+        private System.Windows.Forms.Button button_br_1;
         private System.Windows.Forms.TextBox textbox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView;
@@ -657,6 +668,8 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuTheme;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
